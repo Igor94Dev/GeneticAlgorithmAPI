@@ -2,6 +2,6 @@
 {
     public interface IStrategy
     {
-
+        public void RunMyStrategy();
     }
 }
