@@ -1,3 +1,4 @@
+using GeneticAlgorithmAPI.Strategies;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeneticAlgorithmAPI.Controllers
@@ -16,6 +17,7 @@ namespace GeneticAlgorithmAPI.Controllers
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
+            TwoPointsCrossingWithMutationStrategy two = new TwoPointsCrossingWithMutationStrategy(1, new Dictionary<int, List<Entities.Job>>());
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
