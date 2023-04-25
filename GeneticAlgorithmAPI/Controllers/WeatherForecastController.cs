@@ -10,14 +10,14 @@ namespace GeneticAlgorithmAPI.Controllers
         private static readonly string[] Summaries = new[]
         {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        };
 
         private readonly ILogger<WeatherForecastController> _logger;
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            TwoPointsCrossingWithMutationStrategy two = new TwoPointsCrossingWithMutationStrategy(1, new Dictionary<int, List<Entities.Job>>());
+            
         }
 
         [HttpGet(Name = "GetWeatherForecast")]

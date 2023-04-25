@@ -20,5 +20,11 @@
 
         public int percentageDifferenceBetweenMax { get; set; }
 
+        public int numberOfIteration { get; set; }
+
+        public int minTimeOfExecutionOfJob { get; set; }
+
+        public int maxTimeOfExecutionOfJob { get; set; }
+
     }
 }
