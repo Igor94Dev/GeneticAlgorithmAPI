@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmAPI", "GeneticAlgorithmAPI\GeneticAlgorithmAPI.csproj", "{C06C716F-BAF1-4619-9515-15633FBCD28E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeneticAlgorithmAPI", "GeneticAlgorithmAPI\GeneticAlgorithmAPI.csproj", "{C06C716F-BAF1-4619-9515-15633FBCD28E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticAlgorithmAPINUnitTests", "GeneticAlgorithmAPINUnitTests\GeneticAlgorithmAPINUnitTests.csproj", "{893062D4-E182-4BE1-8476-470475712F3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C06C716F-BAF1-4619-9515-15633FBCD28E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C06C716F-BAF1-4619-9515-15633FBCD28E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C06C716F-BAF1-4619-9515-15633FBCD28E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{893062D4-E182-4BE1-8476-470475712F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{893062D4-E182-4BE1-8476-470475712F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{893062D4-E182-4BE1-8476-470475712F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{893062D4-E182-4BE1-8476-470475712F3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

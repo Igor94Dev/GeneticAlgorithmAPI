@@ -1,5 +1,7 @@
 ﻿using GeneticAlgorithmAPI.Entities;
-using GeneticAlgorithmAPI.Interfaces;
+using PeanutButter.RandomGenerators;
+using PeanutButter.Utils;
+using System.Runtime.CompilerServices;
 
 namespace GeneticAlgorithmAPI.Abstract
 {
@@ -10,31 +12,68 @@ namespace GeneticAlgorithmAPI.Abstract
 
         protected readonly int numberOfMachines;
 
-        protected readonly Dictionary<int, List<Job>> listOfJobs;
+        protected readonly int minTimeOfExecutionOfJob;
 
-        protected GenticAlgorithm (int _numberOfJobs, int numberOfMachines)
+        protected readonly int maxTimeOfExecutionOfJob;
+
+        protected readonly int iteration;
+        protected int maxSizeOfList { get; private set; }
+
+        protected readonly Dictionary<int, List<Job>> listOfJobs;
+        
+        protected GenticAlgorithm (int _numberOfJobs, int _numberOfMachines, int _minTimeOfExecutionOfJob, int _maxTimeOfExecutionOfJob, int _iteration)
         {
             this.numberOfJobs = _numberOfJobs;
-            this.numberOfMachines = numberOfMachines;
-            this.listOfJobs = new Dictionary<int, List<Job>>();
+            this.numberOfMachines = _numberOfMachines;
+            this.iteration = _iteration;
+            this.minTimeOfExecutionOfJob = _minTimeOfExecutionOfJob;
+            this.maxTimeOfExecutionOfJob = _maxTimeOfExecutionOfJob;
+            this.listOfJobs = new Dictionary<int, List<Job>>(numberOfMachines);
+
         }
-
-
-        protected GenticAlgorithm SetJobsInMachines(int minLength, int maxLength)
+        protected virtual void CreateMachines()
         {
-            return this;
+            for (int i = 0; i < numberOfMachines; i++)
+            {
+                listOfJobs.Add(i, new List<Job>());
+            }
         }
 
-        public virtual GenticAlgorithm CreateMachines(int numberOfMachines)
+        protected virtual void SetJobsInMachines(int minLength, int maxLength)
         {
-            return this;
+            int tracker = 0;
+            for (int i = 0; i < numberOfJobs; i++)
+            {
+                listOfJobs[tracker].Add(new Job(RandomValueGen.GetRandomInt(minLength, maxLength), i));
+                if (listOfJobs[tracker].Count > maxSizeOfList) maxSizeOfList = listOfJobs[tracker].Count;
+                tracker += 1;
+                if (tracker == listOfJobs.Count) tracker = 0;
+                
+            }
         }
 
-      
-        public virtual GenticAlgorithm SetEndStrategy(int numbersOfIteration)
+        public virtual int GetNumberOfMachines()
         {
-            return this;
+            return listOfJobs.Count();
         }
+
+        public virtual int GetNumberOfJobs()
+        {
+            return listOfJobs.Sum(x => x.Value.Count);
+        }
+
+        public List<int> CheckUniqueOfJobs()
+        {
+            List<int> list = new List<int>();
+            //listOfJobs.ForEach(x => list.AddRange(x.Value.Select(q => q.myUniqueNumber)));
+            foreach (var myItem in listOfJobs)
+            {                
+                list.AddRange(myItem.Value.Select(x=>x.myUniqueNumber).ToList());
+            }
+            list.Sort();
+            return list;
+        }
+
 
     }
 }
