@@ -4,5 +4,6 @@
     {
         public void SetUpMyStrategy();
         public void RunMyStrategy();
+
     }
 }
