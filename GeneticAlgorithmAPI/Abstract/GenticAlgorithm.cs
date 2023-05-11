@@ -17,7 +17,12 @@ namespace GeneticAlgorithmAPI.Abstract
         protected readonly int maxTimeOfExecutionOfJob;
 
         protected readonly int iteration;
+
         protected int maxSizeOfList { get; private set; }
+
+        protected int mostMinSizeOfMachinesBeforeMutation { get; private set; }
+
+        protected int mostMaxSizeOfMachinesBeforeMutation { get; private set; }
 
         protected readonly Dictionary<int, List<Job>> listOfJobs;
         
@@ -29,13 +34,28 @@ namespace GeneticAlgorithmAPI.Abstract
             this.minTimeOfExecutionOfJob = _minTimeOfExecutionOfJob;
             this.maxTimeOfExecutionOfJob = _maxTimeOfExecutionOfJob;
             this.listOfJobs = new Dictionary<int, List<Job>>(numberOfMachines);
-
+            this.mostMinSizeOfMachinesBeforeMutation = int.MaxValue;
+            this.mostMaxSizeOfMachinesBeforeMutation = 0;
         }
         protected virtual void CreateMachines()
         {
             for (int i = 0; i < numberOfMachines; i++)
             {
                 listOfJobs.Add(i, new List<Job>());
+            }
+        }
+        protected virtual void SetTheMostMinAndMaxSizeOfMachine()
+        {
+            int minMax = 0;          
+            for (int i = 0; i < listOfJobs.Count; i++)
+            {
+                for (int j = 0; j < listOfJobs[i].Count; j++)
+                {
+                    minMax += listOfJobs[i][j].totalTimeOfExecuteThisJob;
+                }
+                if (minMax < mostMinSizeOfMachinesBeforeMutation) mostMinSizeOfMachinesBeforeMutation = minMax;
+                if (minMax > mostMaxSizeOfMachinesBeforeMutation) mostMaxSizeOfMachinesBeforeMutation = minMax;
+                minMax = 0;
             }
         }
 
@@ -65,11 +85,7 @@ namespace GeneticAlgorithmAPI.Abstract
         public List<int> CheckUniqueOfJobs()
         {
             List<int> list = new List<int>();
-            //listOfJobs.ForEach(x => list.AddRange(x.Value.Select(q => q.myUniqueNumber)));
-            foreach (var myItem in listOfJobs)
-            {                
-                list.AddRange(myItem.Value.Select(x=>x.myUniqueNumber).ToList());
-            }
+            listOfJobs.ForEach(x => list.AddRange(x.Value.Select(q => q.myUniqueNumber)));
             list.Sort();
             return list;
         }

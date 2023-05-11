@@ -15,18 +15,21 @@ namespace GeneticAlgorithmAPI.Strategies
             infoModel = new Information();
             infoModel.totalNumbersOfJobs = _numberOfJobs;
             infoModel.totalNumbersOfMachines = _numberOfMachines;
+            infoModel.minTimeOfExecutionOfJob= _minTimeOfExecutionOfJob;
+            infoModel.maxTimeOfExecutionOfJob = _maxTimeOfExecutionOfJob;
             infoModel.numberOfIteration= _iteration;
         }
 
         public void RunMyStrategy()
         {          
-            MutationStrategy(iteration);          
+            MutationStrategy(iteration);
         }
 
         public void SetUpMyStrategy()
         {
             CreateMachines();
             SetJobsInMachines(minTimeOfExecutionOfJob, maxTimeOfExecutionOfJob);
+            SetTheMostMinAndMaxSizeOfMachine();
         }
 
         private void MutationStrategy(int iteration)
@@ -60,7 +63,6 @@ namespace GeneticAlgorithmAPI.Strategies
                 jobToMove_2 = SelectedJobsForMutation_2[randVal2];
                 SelectedJobsForMutation_2[randVal] = jobToMove_2;
                 SelectedJobsForMutation_2[randVal2] = jobToMove;
-                jobToMove = null; jobToMove_2 = null; SelectedJobsForMutation_1 = null;SelectedJobsForMutation_2 = null;halfJobsToMutate1 = null; halfJobsToMutate2 = null;
             }
         }
     }

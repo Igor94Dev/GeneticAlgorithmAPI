@@ -2,6 +2,7 @@
 {
     public class Information
     {
+        public int Id { get; set; }
         public int minSizeBeforeStartStrategy { get; set; }
 
         public int maxSizeBeforeStartStrategy { get; set; }
@@ -27,4 +28,5 @@
         public int maxTimeOfExecutionOfJob { get; set; }
 
     }
+
 }
