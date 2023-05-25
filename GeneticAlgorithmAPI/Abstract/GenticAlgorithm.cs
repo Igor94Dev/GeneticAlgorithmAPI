@@ -26,10 +26,10 @@ namespace GeneticAlgorithmAPI.Abstract
 
         protected readonly Dictionary<int, List<Job>> listOfJobs;
         
-        protected GenticAlgorithm (int _numberOfJobs, int _numberOfMachines, int _minTimeOfExecutionOfJob, int _maxTimeOfExecutionOfJob, int _iteration)
+        protected GenticAlgorithm (int _numberOfMachines, int _numberOfJobs, int _minTimeOfExecutionOfJob, int _maxTimeOfExecutionOfJob, int _iteration)
         {
-            this.numberOfJobs = _numberOfJobs;
             this.numberOfMachines = _numberOfMachines;
+            this.numberOfJobs = _numberOfJobs;
             this.iteration = _iteration;
             this.minTimeOfExecutionOfJob = _minTimeOfExecutionOfJob;
             this.maxTimeOfExecutionOfJob = _maxTimeOfExecutionOfJob;

@@ -12,7 +12,7 @@ namespace GeneticAlgorithmAPI.Strategies
         private Information infoModel;
         private const int percentDifference = 15;
 
-        public TreeCrossingStrategy(int _numberOfMachines, int _numberOfJobs, int _minTimeOfExecutionOfJob, int _maxTimeOfExecutionOfJob, int _iteration) : base(_numberOfJobs, _numberOfMachines, _minTimeOfExecutionOfJob, _maxTimeOfExecutionOfJob, _iteration)
+        public TreeCrossingStrategy(int _numberOfMachines, int _numberOfJobs, int _minTimeOfExecutionOfJob, int _maxTimeOfExecutionOfJob, int _iteration) : base(_numberOfMachines, _numberOfJobs, _minTimeOfExecutionOfJob, _maxTimeOfExecutionOfJob, _iteration)
         {
             infoModel = new Information();
             infoModel.totalNumbersOfJobs = _numberOfJobs;
