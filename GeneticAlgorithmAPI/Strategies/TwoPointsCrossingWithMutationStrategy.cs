@@ -46,7 +46,8 @@ namespace GeneticAlgorithmAPI.Strategies
             Job jobToMove = null;
             Job jobToMove_2 = null;
             for (int i = 0; i < iteration; i++)
-            {              
+            {  
+                
                 SelectedJobsForMutation_1 = listOfJobs[tracker];
                 SelectedJobsForMutation_2 = listOfJobs[((tracker + 1) == listOfJobs.Count) ? 0 : (tracker + 1)];
                 jobsToTake1 = SelectedJobsForMutation_1.Count % 2 == 0 ? SelectedJobsForMutation_1.Count / 2 : (SelectedJobsForMutation_1.Count + 1) / 2;
